@@ -17,7 +17,7 @@ runs:
       shell: bash
     - id: find-result
       run: |
-        echo "ARGCOUNT=`${{ github.action_path }}/count-args.sh` >> $GITHUB_ENV
+        echo "ARGCOUNT=`${{ github.action_path }}/count-args.sh`" >> $GITHUB_ENV
       shell: bash
     - id: return-result  
       run: |
