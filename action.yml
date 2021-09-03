@@ -18,6 +18,8 @@ runs:
     - id: find-result
       run: |
         echo "ARGCOUNT=`${{ github.action_path }}/count-args.sh` >> $GITHUB_ENV
+      shell: bash
     - id: return-result  
       run: |
         echo "::set-output name=num-args::$(echo {{ env.ARGCOUNT }})"
+      shell: bash
