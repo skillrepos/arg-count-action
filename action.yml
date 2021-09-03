@@ -1,0 +1,23 @@
+name: 'Argument Counter'
+description: 'Count # of arguments passed in'
+inputs:
+  arguments-to-count: # input id
+    description: 'arguments to count'
+    required: true
+    default: ''
+outputs:
+  arg-count:
+    description: "Count of arguments passed in"
+    value: ${{ steps.count-args.outputs.num-args }}
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo Arguments: ${{ inputs.arguments-to-count }}.
+      shell: bash
+    - id: find-result
+      run: |
+        echo "ARGCOUNT=`${{ github.action_path }}/count-args.sh` >> $GITHUB_ENV
+    - id: return-result  
+      run: |
+        echo "::set-output name=num-args::$(echo {{ env.ARGCOUNT }})"
