@@ -12,10 +12,10 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: |
+    - if: ${{ inputs.arguments-to-count }}
+      run: |
         echo Arguments: ${{ inputs.arguments-to-count }}.
       shell: bash
-      if: ${{ inputs.arguments-to-count }}
     - id: find-result
       run: |
         echo "ARGCOUNT=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_ENV
