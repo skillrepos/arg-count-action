@@ -13,7 +13,6 @@ runs:
   using: "composite"
   steps:
     - name: Print arguments if any
-      echo abc
       if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
       run: |
         echo Arguments: ${{ inputs.arguments-to-count }}.
