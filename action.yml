@@ -13,7 +13,7 @@ runs:
   using: "composite"
   steps:
     - name: 'Print arguments if any'
-      if: inputs.arguments-to-count > 0 
+      if: ${{ failure() }}
       run: |
         echo Arguments: ${{ inputs.arguments-to-count }}.
       shell: bash
