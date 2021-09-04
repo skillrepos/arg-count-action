@@ -12,11 +12,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: My first step
-      if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
-      run: echo This event is a pull request that had an assignee removed.
     - name: Print arguments if any
-      if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
       run: |
         echo Arguments: ${{ inputs.arguments-to-count }}.
       shell: bash
