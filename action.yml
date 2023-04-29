@@ -16,11 +16,8 @@ runs:
       run: |
         echo Arguments: ${{ inputs.arguments-to-count }}.
       shell: bash
-    - id: find-result
+    - id: return-result
       run: |
-        echo "ARGCOUNT=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_ENV
+        echo "num-args=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_OUTPUT
       shell: bash
-    - id: return-result  
-      run: |
-        echo "::set-output name=num-args::$(echo ${{ env.ARGCOUNT }})"
-      shell: bash
+      
